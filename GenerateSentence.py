@@ -9,6 +9,7 @@ class setupUIFunctions():
     def __init__(self, Window):
         self.Window = Window
         self.isTop = False
+        self.StarState = 0
         self.setupUIFunctions()
 
     def setupUIFunctions(self):
@@ -25,6 +26,11 @@ class setupUIFunctions():
         self.Window.pushButton_PasteModel.clicked.connect(self.PasteIntoModel)
         self.Window.pushButton_PasteKeywords.clicked.connect(self.PasteIntoKeywords)
         self.Window.pushButton_PasteComments.clicked.connect(self.PasteIntoComments)
+        self.Window.pushButton_star1.clicked.connect(lambda:self.LightupStars(1))
+        self.Window.pushButton_star2.clicked.connect(lambda:self.LightupStars(2))
+        self.Window.pushButton_star3.clicked.connect(lambda:self.LightupStars(3))
+        self.Window.pushButton_star4.clicked.connect(lambda:self.LightupStars(4))
+        self.Window.pushButton_star5.clicked.connect(lambda:self.LightupStars(5))
         self.Window.plainTextEdit_Eassy.textChanged.connect(self.checkText)
 
     ####################################################################################
@@ -96,6 +102,48 @@ class setupUIFunctions():
         if "Classifier" in Inns:
             self.Window.checkBox_Classifier.setChecked(True)
 
+    def LightupStars(self, number):
+        self.PutoutStars()
+        self.StarState = number
+        if number == 1:
+            self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+        if number == 2:
+            self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star2.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+        if number == 3:
+            self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star2.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star3.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+        if number == 4:
+            self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star2.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star3.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star4.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+        if number == 5:
+            self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star2.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star3.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star4.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+            self.Window.pushButton_star5.setStyleSheet("border-image: url(:/Icons/Resources/red_star_256px_1075492_easyicon.net.png);")
+
+    def PutoutStars(self):
+        self.StarState = 0
+        self.Window.pushButton_star1.setStyleSheet("border-image: url(:/Icons/Resources/gray_star_256px_1075532_easyicon.net.png);")
+        self.Window.pushButton_star2.setStyleSheet("border-image: url(:/Icons/Resources/gray_star_256px_1075532_easyicon.net.png);")
+        self.Window.pushButton_star3.setStyleSheet("border-image: url(:/Icons/Resources/gray_star_256px_1075532_easyicon.net.png);")
+        self.Window.pushButton_star4.setStyleSheet("border-image: url(:/Icons/Resources/gray_star_256px_1075532_easyicon.net.png);")
+        self.Window.pushButton_star5.setStyleSheet("border-image: url(:/Icons/Resources/gray_star_256px_1075532_easyicon.net.png);")
+
+    def EncodeStar(self):
+        if self.StarState == 0:
+            return ""
+        else:
+            return '★' * self.StarState
+
+    def DecodeStar(self, stars):
+        number = stars.count('★')
+        self.LightupStars(number)
+
 
     ####################################################################################
     #                               Upside Buttons                                     #
@@ -118,7 +166,8 @@ class setupUIFunctions():
         Output += self.Window.plainTextEdit_Comments.toPlainText() + '\t'
         Output += self.Window.plainTextEdit_KeyWords.toPlainText() + '\t'
         Output += self.PackInnovation() + '\t'
-        Output += self.Window.plainTextEdit_Base.toPlainText()
+        Output += self.Window.plainTextEdit_Base.toPlainText() + '\t'
+        Output += self.EncodeStar()
         self.setClipBoard(Output)
 
     def ClearOutput(self):
@@ -137,11 +186,13 @@ class setupUIFunctions():
         self.Window.checkBox_Convolution.setChecked(False)
         self.Window.checkBox_Pooling.setChecked(False)
         self.Window.checkBox_Classifier.setChecked(False)
+
+        self.PutoutStars()
             
 
     def LoadinData(self):
         data = self.getClipBoard()
-        if data.count('\t') != 7:
+        if data.count('\t') != 8:
             return
         data = data.split('\t')
         self.ClearOutput()
@@ -165,6 +216,8 @@ class setupUIFunctions():
             self.UnpackInnovation(data[6])
         if data[7] != '\n' and data[7] != '\r' and data[7] != '\r\n':
             self.Window.plainTextEdit_Base.setPlainText(data[7])
+        if data[8]:
+            self.DecodeStar(data[8])
 
         self.Window.spinBox.setValue(int(data[0]))
 

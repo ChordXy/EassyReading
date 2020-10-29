@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="Icons">
+    <file>Resources/gray_star_256px_1075532_easyicon.net.png</file>
+    <file>Resources/red_star_256px_1075492_easyicon.net.png</file>
     <file>Resources/document_128px_1287920_easyicon.net.ico</file>
   </qresource>
 </RCC>
