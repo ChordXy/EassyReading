@@ -558,282 +558,35 @@
       </item>
      </layout>
     </item>
-    <item>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="6">
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_top">
-        <property name="text">
-         <string>置顶(R)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+R</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="9">
-       <widget class="QPushButton" name="pushButton_quit">
-        <property name="text">
-         <string>退出(Q)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+Q</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="pushButton_copy">
-        <property name="text">
-         <string>复制(W)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+W</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="10">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="7">
-       <widget class="QPushButton" name="pushButton_Load">
-        <property name="text">
-         <string>读入(T)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+T</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="0">
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="8">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="4">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="5">
-       <widget class="QPushButton" name="pushButton_clear">
-        <property name="text">
-         <string>清空(E)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+E</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton_PasteEassy">
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>论文名(1)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+1</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <spacer name="horizontalSpacer_7">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="2">
-       <spacer name="horizontalSpacer_8">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="4">
-       <spacer name="horizontalSpacer_9">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="6">
-       <spacer name="horizontalSpacer_10">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="8">
-       <spacer name="horizontalSpacer_11">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="10">
-       <spacer name="horizontalSpacer_12">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="3">
-       <widget class="QPushButton" name="pushButton_PasteAuthor">
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>作者(2)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+2</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="7">
-       <widget class="QPushButton" name="pushButton_PasteKeywords">
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>关键词(4)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+4</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="9">
-       <widget class="QPushButton" name="pushButton_PasteComments">
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>简评(5)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+5</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QPushButton" name="pushButton_PasteModel">
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>源模型(3)</string>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+3</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
    </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_open"/>
+   <addaction name="action_I"/>
+   <addaction name="action_directory"/>
+   <addaction name="separator"/>
+   <addaction name="action_copy"/>
+   <addaction name="action_clear"/>
+   <addaction name="action_loadin"/>
+   <addaction name="separator"/>
+   <addaction name="action_top"/>
+   <addaction name="action_quit"/>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -845,7 +598,124 @@
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_copy">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/copy_256px_1113380_easyicon.net.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>复制（W）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="action_clear">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/delete_file_512px_1187316_easyicon.net.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>清空（E）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="action_loadin">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/document_128px_1287920_easyicon.net.ico</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>读入（R）</string>
+   </property>
+   <property name="toolTip">
+    <string>读入（R）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="action_top">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/Thumbtack_pin_512px_1187300_easyicon.net.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>置顶（T）</string>
+   </property>
+   <property name="toolTip">
+    <string>置顶（T）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/close_256px_1159854_easyicon.net.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>退出（Q）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_open">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Functions/Resources/file_412px_1291720_easyicon.net.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>打开（F）</string>
+   </property>
+   <property name="toolTip">
+    <string>打开（F）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="action_directory">
+   <property name="icon">
+    <iconset resource="Resrouces.qrc">
+     <normaloff>:/Functions/Resources/Path_512px_1128726_easyicon.net.png</normaloff>
+     <normalon>:/Functions/Resources/Path_512px_1128726_easyicon.net.png</normalon>:/Functions/Resources/Path_512px_1128726_easyicon.net.png</iconset>
+   </property>
+   <property name="text">
+    <string>工作路径（D）</string>
+   </property>
+   <property name="toolTip">
+    <string>工作路径（D）</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="action_I">
+   <property name="icon">
+    <iconset resource="Resrouces.qrc">
+     <normaloff>:/Functions/Resources/file_412.png</normaloff>:/Functions/Resources/file_412.png</iconset>
+   </property>
+   <property name="text">
+    <string>取消搜索(I)</string>
+   </property>
+   <property name="toolTip">
+    <string>取消搜索(I)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>plainTextEdit_Eassy</tabstop>
@@ -855,14 +725,26 @@
   <tabstop>plainTextEdit_Base</tabstop>
   <tabstop>plainTextEdit_KeyWords</tabstop>
   <tabstop>plainTextEdit_Comments</tabstop>
-  <tabstop>pushButton_top</tabstop>
-  <tabstop>pushButton_copy</tabstop>
-  <tabstop>pushButton_clear</tabstop>
-  <tabstop>pushButton_Load</tabstop>
-  <tabstop>pushButton_quit</tabstop>
  </tabstops>
  <resources>
   <include location="Resrouces.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>action_quit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>399</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

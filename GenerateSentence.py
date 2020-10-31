@@ -1,8 +1,30 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+import threading
 import datetime
+import time
 import os
+
+
+class retrieveThread(QThread):
+    retrieveResult = pyqtSignal(list)
+
+    def __init__(self, parent=None):
+        super(retrieveThread, self).__init__(parent)
+
+    def setParameters(self, folder, search_file):
+        self.folder = folder
+        self.search_file = (search_file + '.pdf').upper()
+
+    def run(self):
+        result = []
+        for root, _, files in os.walk(self.folder):
+            for file in files:
+                fileup = file.upper()
+                if fileup.endswith(self.search_file):
+                    result.append(os.path.join(root, file))
+        self.retrieveResult.emit(result)
 
 
 class setupUIFunctions():
@@ -10,27 +32,38 @@ class setupUIFunctions():
         self.Window = Window
         self.isTop = False
         self.StarState = 0
+        self.WorkSpace = "C:/"
+        self.reThread = retrieveThread()
+        self.Window.action_I.setEnabled(False)
+        self.DefaultSaveDir = os.path.join(QDir.homePath(), 'Documents', 'EassyReading.log')
         self.setupUIFunctions()
 
     def setupUIFunctions(self):
+        self.loadParams()
         self.connectSignals2Slots()
 
     def connectSignals2Slots(self):
-        self.Window.pushButton_quit.clicked.connect(lambda:self.Window.close())
-        self.Window.pushButton_copy.clicked.connect(self.GenerateOutput)
-        self.Window.pushButton_clear.clicked.connect(self.ClearOutput)
-        self.Window.pushButton_top.clicked.connect(self.ChangeTopState)
-        self.Window.pushButton_Load.clicked.connect(self.LoadinData)
-        self.Window.pushButton_PasteEassy.clicked.connect(self.PasteIntoEassy)
-        self.Window.pushButton_PasteAuthor.clicked.connect(self.PasteIntoAuthor)
-        self.Window.pushButton_PasteModel.clicked.connect(self.PasteIntoModel)
-        self.Window.pushButton_PasteKeywords.clicked.connect(self.PasteIntoKeywords)
-        self.Window.pushButton_PasteComments.clicked.connect(self.PasteIntoComments)
         self.Window.pushButton_star1.clicked.connect(lambda:self.LightupStars(1))
         self.Window.pushButton_star2.clicked.connect(lambda:self.LightupStars(2))
         self.Window.pushButton_star3.clicked.connect(lambda:self.LightupStars(3))
         self.Window.pushButton_star4.clicked.connect(lambda:self.LightupStars(4))
         self.Window.pushButton_star5.clicked.connect(lambda:self.LightupStars(5))
+
+        QShortcut(QKeySequence(self.Window.tr("Ctrl+1")), self.Window, self.PasteIntoEassy)
+        QShortcut(QKeySequence(self.Window.tr("Ctrl+2")), self.Window, self.PasteIntoAuthor)
+        QShortcut(QKeySequence(self.Window.tr("Ctrl+3")), self.Window, self.PasteIntoModel)
+        QShortcut(QKeySequence(self.Window.tr("Ctrl+4")), self.Window, self.PasteIntoKeywords)
+        QShortcut(QKeySequence(self.Window.tr("Ctrl+5")), self.Window, self.PasteIntoComments)
+
+        self.Window.action_copy.triggered.connect(self.GenerateOutput)
+        self.Window.action_top.triggered.connect(self.ChangeTopState)
+        self.Window.action_clear.triggered.connect(self.ClearOutput)
+        self.Window.action_loadin.triggered.connect(self.LoadinData)
+        self.Window.action_open.triggered.connect(self.OpenFile)
+        self.Window.action_directory.triggered.connect(self.setDirectory)
+        self.Window.action_I.triggered.connect(self.cancelThread)
+
+        self.reThread.retrieveResult.connect(self.SelectFileToOpen)
         self.Window.plainTextEdit_Eassy.textChanged.connect(self.checkText)
 
     ####################################################################################
@@ -144,6 +177,28 @@ class setupUIFunctions():
         number = stars.count('★')
         self.LightupStars(number)
 
+    def setTitle(self):
+        if self.WorkSpace:
+            self.Window.setWindowTitle("论文阅读   - " + self.WorkSpace)
+
+    def saveParams(self):
+        with open(self.DefaultSaveDir, 'w+') as file:
+            file.truncate(0)
+            file.write(self.WorkSpace)
+
+    def loadParams(self):
+        with open(self.DefaultSaveDir, 'r+') as file:
+            self.WorkSpace = file.read()
+        self.setTitle()
+
+    def getTimeInfo(self):
+        return "[" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f') + "] "
+
+    def ZhiYunOpen(self, file):
+        application = "C:\Program Files (x86)\ZhiyunTranslator\ZhiYunTranslator.exe"
+        commandText = 'start "" "' + application + '" "' + file + '"'
+        command = '"' + commandText + '"'
+        os.system(command)
 
     ####################################################################################
     #                               Upside Buttons                                     #
@@ -189,7 +244,6 @@ class setupUIFunctions():
 
         self.PutoutStars()
             
-
     def LoadinData(self):
         data = self.getClipBoard()
         if data.count('\t') != 8:
@@ -221,6 +275,32 @@ class setupUIFunctions():
 
         self.Window.spinBox.setValue(int(data[0]))
 
+    def OpenFile(self):
+        Eassy = self.Window.plainTextEdit_Eassy.toPlainText().replace(':', "")
+        if not Eassy:
+            return
+        self.reThread.setParameters(self.WorkSpace, Eassy)
+        self.reThread.start()
+        self.Window.action_open.setEnabled(False)
+        self.Window.action_I.setEnabled(True)
+
+    def SelectFileToOpen(self, dirs):
+        if dirs:
+            self.ZhiYunOpen(dirs[0])
+
+        self.Window.action_open.setEnabled(True)
+        self.Window.action_I.setEnabled(False)
+
+    def cancelThread(self):
+        self.reThread.quit()
+        self.Window.action_open.setEnabled(True)
+        self.Window.action_I.setEnabled(False)    
+
+    def setDirectory(self):
+        dirt = QFileDialog.getExistingDirectory(None, "请选择当前文档存放路径", "D:")
+        self.WorkSpace = dirt
+        self.saveParams()
+        self.setTitle() 
 
     ####################################################################################
     #                              Downside Buttons                                    #

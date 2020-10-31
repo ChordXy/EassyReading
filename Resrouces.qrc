@@ -4,4 +4,19 @@
     <file>Resources/red_star_256px_1075492_easyicon.net.png</file>
     <file>Resources/document_128px_1287920_easyicon.net.ico</file>
   </qresource>
+  <qresource prefix="Functions">
+    <file>Resources/file_412.png</file>
+    <file>Resources/Path_512px_1128726_easyicon.net.png</file>
+    <file>Resources/path_144px_1126460_easyicon.net.png</file>
+    <file>Resources/close_256px_1159854_easyicon.net.png</file>
+    <file>Resources/Copy_213px_1194752_easyicon.net.png</file>
+    <file>Resources/copy_256px_1113380_easyicon.net.png</file>
+    <file>Resources/delete_file_512px_1187316_easyicon.net.png</file>
+    <file>Resources/dialog_close_474px_1173781_easyicon.net.png</file>
+    <file>Resources/document_128px_1287920_easyicon.net.ico</file>
+    <file>Resources/document_484px_1287949_easyicon.net.png</file>
+    <file>Resources/file_412px_1291720_easyicon.net.png</file>
+    <file>Resources/garbage_bin_448px_1253864_easyicon.net.png</file>
+    <file>Resources/Thumbtack_pin_512px_1187300_easyicon.net.png</file>
+  </qresource>
 </RCC>
